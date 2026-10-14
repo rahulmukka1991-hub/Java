@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Practice Exercises - Collections and Exceptions</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+            color: #333;
+            background-color: #f5f7fa;
+        }
+
+        header {
+            background: #173b65;
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        h2 {
+            color: #173b65;
+            border-bottom: 2px solid #dce5ef;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            color: #245b87;
+        }
+
+        section {
+            background: white;
+            padding: 22px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            border: 1px solid #dce3eb;
+        }
+
+        .level {
+            display: inline-block;
+            background: #e1f3e7;
+            color: #176536;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .topics {
+            background: #edf4fc;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            border: 1px solid #d6dee8;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #edf2f8;
+        }
+
+        code {
+            background: #eef1f5;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        @media print {
+            body {
+                background: white;
+                margin: 0;
+                max-width: none;
+            }
+
+            section {
+                break-inside: avoid;
+                border: 1px solid #ccc;
+            }
+
+            header {
+                background: #173b65 !important;
+                color: white !important;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Java Practice Exercises</h1>
+    <p><strong>Topics:</strong> Collections and Exception Handling</p>
+    <p>
+        Practice basic Java programming using ArrayList, HashMap,
+        HashSet, built-in exceptions, and custom exceptions.
+    </p>
+</header>
+
+<section>
+    <h2>1. Introduction</h2>
+    <p>
+        The purpose of these exercises is to understand basic Java
+        Collections and Exception Handling through simple programming
+        problems.
+    </p>
+
+    <h3>Learning Objectives</h3>
+    <ul>
+        <li>Understand ArrayList, HashMap, and HashSet.</li>
+        <li>Add, search, and retrieve collection elements.</li>
+        <li>Handle built-in Java exceptions.</li>
+        <li>Create and handle custom exceptions.</li>
+        <li>Validate user input.</li>
+        <li>Prevent application crashes caused by invalid input.</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Exercise 1: Student Name Management</h2>
+    <span class="level">Beginner</span>
+
+    <h3>Problem Statement</h3>
+    <p>
+        Create a Java program to store student names in an
+        <code>ArrayList</code>. The program should allow users to add
+        a student name, search for a student, and display all student
+        names. It must prevent duplicate names and reject empty names
+        using exception handling.
+    </p>
+
+    <h3>Requirements</h3>
+    <ol>
+        <li>Store student names in an <code>ArrayList&lt;String&gt;</code>.</li>
+        <li>Allow users to add student names.</li>
+        <li>Display all stored student names.</li>
+        <li>Search for a student by name.</li>
+        <li>Prevent duplicate student names.</li>
+        <li>Throw an exception when an empty name is entered.</li>
+        <li>Handle exceptions and display meaningful messages.</li>
+    </ol>
+
+    <h3>Acceptance Criteria</h3>
+    <ul>
+        <li>A valid student name is added successfully.</li>
+        <li>A duplicate name is not added.</li>
+        <li>An empty name is rejected.</li>
+        <li>Searching for an existing student displays a success message.</li>
+        <li>Searching for a nonexistent student displays a not-found message.</li>
+        <li>The program does not terminate unexpectedly due to invalid input.</li>
+    </ul>
+
+    <div class="topics">
+        <strong>Concepts:</strong>
+        ArrayList, add(), contains(), isEmpty(),
+        IllegalArgumentException, try-catch.
+    </div>
+</section>
+
+<section>
+    <h2>Exercise 2: Number List with Exception Handling</h2>
+    <span class="level">Beginner</span>
+
+    <h3>Problem Statement</h3>
+    <p>
+        Create a Java program that accepts numbers from the user and
+        stores them in an <code>ArrayList&lt;Integer&gt;</code>.
+        Display all entered numbers and calculate their sum.
+        Handle invalid numeric input without crashing.
+        The user can type <code>done</code> to stop entering numbers.
+    </p>
+
+    <h3>Requirements</h3>
+    <ol>
+        <li>Accept multiple numbers from the user.</li>
+        <li>Store valid numbers in an ArrayList.</li>
+        <li>Display all entered numbers.</li>
+        <li>Calculate and display the sum.</li>
+        <li>Handle invalid numeric input using exception handling.</li>
+        <li>Stop accepting input when the user enters "done".</li>
+        <li>Handle an empty list appropriately.</li>
+    </ol>
+
+    <h3>Acceptance Criteria</h3>
+    <ul>
+        <li>Valid integers are stored in the list.</li>
+        <li>The sum is calculated correctly.</li>
+        <li>Entering "abc" displays an error instead of crashing.</li>
+        <li>Entering "done" stops the input process.</li>
+        <li>An empty list produces a sum of zero.</li>
+        <li>Previously entered numbers remain stored after invalid input.</li>
+    </ul>
+
+    <div class="topics">
+        <strong>Concepts:</strong>
+        ArrayList, loops, Integer.parseInt(),
+        NumberFormatException, try-catch, Scanner.
+    </div>
+</section>
+
+<section>
+    <h2>Exercise 3: Employee ID Search</h2>
+    <span class="level">Beginner</span>
+
+    <h3>Problem Statement</h3>
+    <p>
+        Create a Java program that stores employee IDs and employee
+        names in a <code>HashMap&lt;Integer, String&gt;</code>.
+        Allow users to search for an employee using an ID.
+        If the ID does not exist, throw and handle a custom
+        <code>EmployeeNotFoundException</code>.
+    </p>
+
+    <h3>Requirements</h3>
+    <ol>
+        <li>Store employee IDs and names in a HashMap.</li>
+        <li>Add at least five employee records.</li>
+        <li>Accept an employee ID from the user.</li>
+        <li>Search for an employee using the entered ID.</li>
+        <li>Display the employee name when the ID exists.</li>
+        <li>Create a custom EmployeeNotFoundException.</li>
+        <li>Throw the exception when the employee ID does not exist.</li>
+        <li>Catch the exception and display a meaningful message.</li>
+    </ol>
+
+    <h3>Acceptance Criteria</h3>
+    <ul>
+        <li>An existing employee ID displays the correct employee name.</li>
+        <li>A nonexistent employee ID throws EmployeeNotFoundException.</li>
+        <li>The exception is caught and an appropriate message is displayed.</li>
+        <li>The program continues running after an unsuccessful search.</li>
+    </ul>
+
+    <div class="topics">
+        <strong>Concepts:</strong>
+        HashMap, put(), get(), containsKey(),
+        custom exceptions, throw, throws, try-catch.
+    </div>
+</section>
+
+<section>
+    <h2>Exercise 4: Unique Product Names</h2>
+    <span class="level">Beginner</span>
+
+    <h3>Problem Statement</h3>
+    <p>
+        Create a Java program that stores product names in a
+        <code>HashSet&lt;String&gt;</code>. Allow users to add
+        products and check whether a product exists. Duplicate
+        products must not be stored more than once, and empty
+        product names must be rejected.
+    </p>
+
+    <h3>Requirements</h3>
+    <ol>
+        <li>Store product names in a HashSet.</li>
+        <li>Allow users to add product names.</li>
+        <li>Display all stored products.</li>
+        <li>Check whether a product exists.</li>
+        <li>Reject empty names using IllegalArgumentException.</li>
+        <li>Display a message when a duplicate product is entered.</li>
+        <li>Handle invalid input appropriately.</li>
+    </ol>
+
+    <h3>Acceptance Criteria</h3>
+    <ul>
+        <li>A new product is added successfully.</li>
+        <li>A duplicate product is not stored twice.</li>
+        <li>An empty product name is rejected.</li>
+        <li>Searching for an existing product returns true.</li>
+        <li>Searching for a nonexistent product returns false.</li>
+        <li>Meaningful messages are displayed for each operation.</li>
+    </ul>
+
+    <div class="topics">
+        <strong>Concepts:</strong>
+        HashSet, add(), contains(), size(),
+        IllegalArgumentException, exception handling.
+    </div>
+</section>
+
+<section>
+    <h2>Exercise 5: Safe List Element Access</h2>
+    <span class="level">Beginner</span>
+
+    <h3>Problem Statement</h3>
+    <p>
+        Create a Java program that stores five integers in an
+        <code>ArrayList&lt;Integer&gt;</code>. Ask the user to
+        enter an index and display the element at that position.
+        Handle invalid indexes and non-numeric input without crashing.
+    </p>
+
+    <h3>Requirements</h3>
+    <ol>
+        <li>Store five integers in an ArrayList.</li>
+        <li>Ask the user to enter an index.</li>
+        <li>Display the element at the specified index.</li>
+        <li>Handle IndexOutOfBoundsException.</li>
+        <li>Handle non-numeric input appropriately.</li>
+        <li>Display a meaningful message when the index is invalid.</li>
+    </ol>
+
+    <h3>Acceptance Criteria</h3>
+    <ul>
+        <li>An index from 0 to 4 displays the correct element.</li>
+        <li>Entering -1 displays an appropriate error message.</li>
+        <li>Entering 5 displays an appropriate error message.</li>
+        <li>Non-numeric input does not crash the program.</li>
+        <li>Invalid indexes are handled using exception handling.</li>
+    </ul>
+
+    <div class="topics">
+        <strong>Concepts:</strong>
+        ArrayList, get(), index-based access,
+        IndexOutOfBoundsException, NumberFormatException, try-catch.
+    </div>
+</section>
+
+<section>
+    <h2>7. General Technical Requirements</h2>
+    <ol>
+        <li>Use Java to implement the solution.</li>
+        <li>Use the collection specified in each exercise.</li>
+        <li>Follow proper variable and class naming conventions.</li>
+        <li>Handle exceptions using appropriate try-catch blocks.</li>
+        <li>Display meaningful error messages.</li>
+        <li>Avoid empty catch blocks.</li>
+        <li>Do not add invalid data to collections.</li>
+        <li>Test both valid and invalid inputs.</li>
+        <li>Keep the solution simple and readable.</li>
+        <li>Use comments where necessary.</li>
+    </ol>
+</section>
+
+<section>
+    <h2>8. Summary of Exercises</h2>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Exercise</th>
+            <th>Topic</th>
+            <th>Collection</th>
+            <th>Exception</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>Student Name Management</td>
+            <td>ArrayList</td>
+            <td>IllegalArgumentException</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Number List</td>
+            <td>ArrayList</td>
+            <td>NumberFormatException</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Employee ID Search</td>
+            <td>HashMap</td>
+            <td>EmployeeNotFoundException</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Unique Product Names</td>
+            <td>HashSet</td>
+            <td>IllegalArgumentException</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Safe List Element Access</td>
+            <td>ArrayList</td>
+            <td>IndexOutOfBoundsException</td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<section>
+    <h2>9. Definition of Done</h2>
+    <ul>
+        <li>All requirements are implemented.</li>
+        <li>All acceptance criteria are satisfied.</li>
+        <li>Valid input is processed correctly.</li>
+        <li>Invalid input is handled appropriately.</li>
+        <li>The required collection is used correctly.</li>
+        <li>Exceptions are handled without unexpected termination.</li>
+        <li>The program has been tested with multiple inputs.</li>
+    </ul>
+</section>
+
+<section>
+    <h2>10. Recommended Learning Order</h2>
+    <ol>
+        <li>Student Name Management</li>
+        <li>Number List with Exception Handling</li>
+        <li>Employee ID Search</li>
+        <li>Unique Product Names</li>
+        <li>Safe List Element Access</li>
+    </ol>
+
+    <p>
+        Start with basic collection operations, then practice
+        exception handling, and finally create a custom exception
+        in Exercise 3.
+    </p>
+
+    <p>
+        <strong>Expected Outcome:</strong>
+        After completing these exercises, you should understand
+        basic Java Collections, input validation, built-in
+        exceptions, and custom exception handling.
+    </p>
+</section>
+
+<footer>
+    <p>Java Practice Exercises | Collections and Exception Handling</p>
+</footer>
+
+</body>
+</html>
