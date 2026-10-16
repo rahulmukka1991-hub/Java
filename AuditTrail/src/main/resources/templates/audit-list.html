@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Audit Trail</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+    <style>
+        [hidden] {
+            display: none !important;
+        }
+
+        .pagination-controls button {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .pagination-controls button:disabled {
+            cursor: not-allowed;
+            opacity: 0.4;
+        }
+
+        .pagination-controls button.active {
+            font-weight: bold;
+        }
+
+        .error-message {
+            color: #b42318;
+            margin: 12px 0;
+        }
+
+        .pagination-controls {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .page-size-form {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+    </style>
+</head>
+
+<body>
+<main class="app">
+
+    <!-- Page header -->
+    <header class="page-header">
+        <h1>Audit Trail</h1>
+        <p>Locate data and prepare reports</p>
+    </header>
+
+    <!-- Filters -->
+    <form id="filterForm" class="filters">
+        <div class="filter-grid">
+
+            <label>
+                <span>Process or Report</span>
+                <select name="processName">
+                    <option value="">All</option>
+                    <option value="Copyover">Copyover</option>
+                    <option value="E2E Resume">E2E Resume</option>
+                    <option value="Spread Maintenance">
+                        Spread Maintenance
+                    </option>
+                </select>
+            </label>
+
+            <label>
+                <span>Region</span>
+                <select name="region">
+                    <option value="">All</option>
+                    <option value="LATAM">LATAM</option>
+                    <option value="NAM">NAM</option>
+                    <option value="APAC">APAC</option>
+                    <option value="EMEA">EMEA</option>
+                </select>
+            </label>
+
+            <label>
+                <span>Package</span>
+                <select name="packageName">
+                    <option value="">All</option>
+                    <option value="Core">Core</option>
+                    <option value="E2E">E2E</option>
+                    <option value="Spread">Spread</option>
+                </select>
+            </label>
+
+            <label>
+                <span>Country</span>
+                <select name="country">
+                    <option value="">All</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="United States">United States</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Singapore">Singapore</option>
+                    <option value="France">France</option>
+                </select>
+            </label>
+
+            <label>
+                <span>Status</span>
+                <select name="status">
+                    <option value="">All</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Rejected">Rejected</option>
+                    <option value="Expired">Expired</option>
+                </select>
+            </label>
+
+            <label class="search-field">
+                <span class="sr-only">Search audit records</span>
+                <input
+                        type="search"
+                        name="q"
+                        placeholder="⌕ Search by ID, user etc">
+            </label>
+
+            <label class="date-field">
+                <span>Date Range</span>
+
+                <div class="date-inputs">
+                    <input
+                            type="date"
+                            name="startDate"
+                            aria-label="Start date">
+
+                    <span>—</span>
+
+                    <input
+                            type="date"
+                            name="endDate"
+                            aria-label="End date">
+                </div>
+            </label>
+
+            <div class="filter-actions">
+                <button class="btn-primary" type="submit">
+                    Search
+                </button>
+
+                <button
+                        class="btn-secondary"
+                        id="resetButton"
+                        type="button">
+                    Reset
+                </button>
+            </div>
+
+        </div>
+    </form>
+
+    <!-- Error message -->
+    <p
+            id="errorMessage"
+            class="error-message"
+            role="alert"
+            aria-live="polite"
+            hidden>
+    </p>
+
+    <!-- Audit table -->
+    <section class="table-card">
+
+        <div class="table-heading">
+            <h2>Audit Records</h2>
+            <p>Review processing history and inbox status</p>
+        </div>
+
+        <div class="table-scroll">
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Process Name</th>
+                    <th>Region</th>
+                    <th>Inbox Status</th>
+                    <th>Reason</th>
+                    <th>Maker</th>
+                    <th>Processing Date</th>
+                </tr>
+                </thead>
+
+                <tbody id="auditTableBody">
+                <tr>
+                    <td colspan="7" class="empty-state">
+                        Loading audit records...
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+    <!-- Pagination -->
+    <nav
+            class="pagination-card"
+            aria-label="Audit table pagination">
+
+        <div class="pagination-info">
+            <span id="paginationInfo">0 items</span>
+        </div>
+
+        <div
+                class="pagination-controls"
+                id="paginationControls">
+        </div>
+
+        <div class="page-size-form">
+            <label for="size">Items per page</label>
+
+            <select id="size" name="size">
+                <option value="10" selected>10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+            </select>
+        </div>
+
+    </nav>
+
+</main>
+
+<script th:src="@{/js/audit.js}"></script>
+
+</body>
+</html>
