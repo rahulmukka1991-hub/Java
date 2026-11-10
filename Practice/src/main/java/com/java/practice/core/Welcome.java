@@ -5,5 +5,9 @@ public class Welcome {
 
         System.out.println("Welcome to Java");
 
+        ClassExample example = new ClassExample();
+        example.setName("name");
+        System.out.println(example.getName());
+        System.out.println(example.upperCaseName("name"));
     }
 }
